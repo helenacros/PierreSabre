@@ -1,6 +1,5 @@
 package personnages;
 
-
 public class Humain {
 
 	private String nom;
@@ -22,7 +21,7 @@ public class Humain {
 	public Humain(String nom,String boisson,int argent) {
 		this.nom=nom;
 		this.boisson=boisson;
-		this.argent=argent;
+		this.setArgent(argent);
 	}
 	
 	public void parler(String texte) {
@@ -43,26 +42,33 @@ public class Humain {
 	
 	
 	private int gagnerArgent(int gain) {
-		return argent+=gain;
+		return setArgent(getArgent() + gain);
 	}
 	
 	public int perdreArgent(int perte) {
-		assert(argent-perte >=0);
-		return argent-=perte;
+		assert(getArgent()-perte >=0);
+		return setArgent(getArgent() - perte);
 		
 	}
 	
 	public void acheter(String bien, int prix){
 		assert(prix>0);
-		if (argent>prix) {
-			parler("J'ai "+ argent+" sous en poche. Je vais pouvoir m'offrir un "+bien+" à "+prix+" sous");
+		if (getArgent()>prix) {
+			parler("J'ai "+ getArgent()+" sous en poche. Je vais pouvoir m'offrir un "+bien+" à "+prix+" sous");
 			perdreArgent(prix);
 		}
 		else {
-			parler("Je n'ai plus que"+argent+" sous en poche. Je ne peux même pas m'offre un "+bien+" à "+prix+" sous...");
+			parler("Je n'ai plus que"+getArgent()+" sous en poche. Je ne peux même pas m'offre un "+bien+" à "+prix+" sous...");
 		
 		}
 	}
+
+	public int setArgent(int argent) {
+		this.argent = argent;
+		return argent;
+	}
 }
+
+
 
 
