@@ -8,6 +8,7 @@ public class Yakuza extends Humain {
 	
 	public Yakuza(String nom,String boisson, int argent, String clan) {
 		super(nom,boisson,argent); //Seulement sa definition en tant qu'humain
+		this.clan=clan;
 	}
 	
 	public int getReputation() {
@@ -37,7 +38,11 @@ public class Yakuza extends Humain {
 		parler("Ce Ronin pensait vraiment battre " + getNom() + " du clan de " + clan + " ? Je l'ai dÃ©pouillÃ© de ses " + gain + " sous.");
 	} 
 	
-	
+	@Override
+	public void direBonjour() {
+		super.direBonjour();
+		parler("Mon clan est celui de :"+clan);
+	}
 	
 
 }
