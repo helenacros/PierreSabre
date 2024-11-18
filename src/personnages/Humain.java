@@ -83,7 +83,7 @@ public class Humain {
 	}
 	
 	
-	private int gagnerArgent(int gain) {
+	public int gagnerArgent(int gain) {
 		return setArgent(getArgent() + gain);
 	}
 	
