@@ -5,7 +5,7 @@ public class Yakuza extends Humain {
 	private String clan;
 	
 	
-	public Yakuza(String nom,String boisson, int argent, String clan, int reputation) {
+	public Yakuza(String nom,String boisson, int argent, String clan) {
 		super(nom,boisson,argent); //Seulement sa definition en tant qu'humain
 	}
 	

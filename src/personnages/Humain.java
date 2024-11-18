@@ -2,9 +2,12 @@ package personnages;
 
 public class Humain {
 
+	private int MAX=30;
 	private String nom;
 	private String boisson;
 	private int argent;
+	protected int nbConnaissance=0; 
+	protected Humain[] memoire = new Humain[MAX];
 	
 	public String getNom() { 
 		return nom; 
@@ -24,12 +27,51 @@ public class Humain {
 		this.setArgent(argent);
 	}
 	
+	private void repondre(Humain humain) {
+		humain.direBonjour();
+	}
+	
+	private void memoriser(Humain autreHumain) {
+		if(nbConnaissance <MAX) {
+			memoire[nbConnaissance]=autreHumain;
+			nbConnaissance+=1;
+		}
+		else {
+			for(int i=0;i<nbConnaissance-1;i++) {
+				memoire[i]=memoire[i+1];
+			}
+			memoire[nbConnaissance-1]=autreHumain;
+		}	
+	}
+	
+	public void faireConnaissanceAvec(Humain autreHumain) {
+		direBonjour();
+		repondre(autreHumain);
+		memoriser(autreHumain);
+		autreHumain.memoriser(this);
+	}
+	
+	public void listerConnaissance() { 
+		System.out.print(prendreParole()+"Je connais beaucoup de monde : ");
+		for (int i = 0; i < nbConnaissance; i++) {
+	        if (memoire[i] != null) {
+	            System.out.print(memoire[i].getNom());
+	            if (i < nbConnaissance - 1) {  
+	                System.out.print(", ");
+	            }
+	        }
+	    }
+	    System.out.println(); 
+	}
+
+	
+	
 	public void parler(String texte) {
 		System.out.println(prendreParole() + texte );
 	}
 
 	private String prendreParole() {
-		return " ( L'humain : " + nom + " ) ";
+		return " ( " + nom + " ) - ";
 	}
 	
 	public void direBonjour(){
