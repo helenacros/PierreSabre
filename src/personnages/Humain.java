@@ -20,7 +20,7 @@ public class Humain {
 	public int getArgent() { 
 		return argent; 
 	}
-		
+	
 	public Humain(String nom,String boisson,int argent) {
 		this.nom=nom;
 		this.boisson=boisson;
@@ -31,7 +31,7 @@ public class Humain {
 		humain.direBonjour();
 	}
 	
-	private void memoriser(Humain autreHumain) {
+	protected void memoriser(Humain autreHumain) {
 		if(nbConnaissance <MAX) {
 			memoire[nbConnaissance]=autreHumain;
 			nbConnaissance+=1;
